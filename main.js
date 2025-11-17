@@ -61,11 +61,6 @@ app.delete('/api/genres/:id', (req, res) => {
     const genre = genres.find(g => g.id === parseInt(req.params.id));
     if(!genre) return res.status(404).send("The given genre could not be found.");
 
-    console.log(genre)
-
-    const {error} = validateGenre(genre)
-    if (error) return res.status(400).send(error.details[0].message);
-
     index = genres.indexOf(genre)
     genres.splice(index, 1)
 
